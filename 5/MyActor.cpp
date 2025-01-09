@@ -11,10 +11,12 @@ void AMyActor::BeginPlay()
 {
     Super::BeginPlay();
 
-    CurrentLocation = FVector2D(0, 0); // ½ÃÀÛ À§Ä¡ (0,0)
-    UE_LOG(LogTemp, Warning, TEXT("½ÃÀÛ À§Ä¡: (%f, %f)"), CurrentLocation.X, CurrentLocation.Y);
+    UE_LOG(LogTemp, Warning, TEXT("MyActorê°€ ìŠ¤í°ë˜ì—ˆìŠµë‹ˆë‹¤!"));
 
-    move(); // ÀÌµ¿ ½ÃÀÛ
+    CurrentLocation = FVector2D(0, 0); // ì‹œì‘ ìœ„ì¹˜ (0,0)
+    UE_LOG(LogTemp, Warning, TEXT("ì‹œì‘ ìœ„ì¹˜: (%f, %f)"), CurrentLocation.X, CurrentLocation.Y);
+
+    move(); // ì´ë™ ì‹œì‘
 }
 
 void AMyActor::Tick(float DeltaTime)
@@ -26,7 +28,7 @@ int32_t AMyActor::step()
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(0, 1); // 0 ¶Ç´Â 1 »ı¼º
+    std::uniform_int_distribution<> distrib(0, 1); // 0 ë˜ëŠ” 1 ìƒì„±
 
     return distrib(gen);
 }
@@ -41,6 +43,6 @@ void AMyActor::move()
         CurrentLocation.X += xStep;
         CurrentLocation.Y += yStep;
 
-        UE_LOG(LogTemp, Warning, TEXT("ÀÌµ¿ %d: (%f, %f)"), i + 1, CurrentLocation.X, CurrentLocation.Y);
+        UE_LOG(LogTemp, Warning, TEXT("ì´ë™ %d: (%f, %f)"), i + 1, CurrentLocation.X, CurrentLocation.Y);
     }
 }
